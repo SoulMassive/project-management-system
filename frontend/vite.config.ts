@@ -7,21 +7,25 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/_/backend': {
+      '/api': {
         target: 'http://localhost:5000',
-        changeOrigin: true
-      }
-    }
+        changeOrigin: true,
+      },
+    },
   },
   build: {
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          redux:  ['@reduxjs/toolkit', 'react-redux'],
+        manualChunks(id: string) {
+          if (id.includes('react-router-dom')) return 'vendor'
+          if (id.includes('react-dom')) return 'vendor'
+          if (id.includes('react')) return 'vendor'
+          if (id.includes('@reduxjs') || id.includes('react-redux')) return 'redux'
+          if (id.includes('framer-motion')) return 'motion'
+          if (id.includes('recharts')) return 'charts'
         },
       },
     },
-    chunkSizeWarningLimit: 600,
   },
 })
