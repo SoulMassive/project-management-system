@@ -26,6 +26,9 @@ lerna-debug.log*
 .env.*.local
 *.env
 
+# Keep example env files
+!.env.example
+
 # Operating System files
 .DS_Store
 .DS_Store?
@@ -48,13 +51,21 @@ desktop.ini
 coverage/
 .nyc_output
 
-# Project specific
-backend/uploads/*
-!backend/uploads/.gitkeep
-backend/dist/
-frontend/dist/
+# TypeScript
 *.tsbuildinfo
 
-# Prisma (if used)
+# Vite
+frontend/dist/
+frontend/.vite/
+
+# Backend build & runtime
+backend/dist/
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Prisma
 backend/prisma/migrations/
 /generated/prisma
+
+# Vercel
+.vercel/
