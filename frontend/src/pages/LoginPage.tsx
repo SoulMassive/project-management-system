@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { HiOutlineEnvelope, HiOutlineLockClosed, HiOutlineEye, HiOutlineEyeSlash, HiOutlineBriefcase } from 'react-icons/hi2';
 import { useLoginMutation } from '../features/auth/authApiSlice';
 import { setCredentials } from '../features/auth/authSlice';
