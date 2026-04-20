@@ -34,18 +34,22 @@ app.use(activityLogger);
 // Static folders
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/admin', adminRoutes);
-app.use('/api/clients', clientRoutes);
-app.use('/api/projects', projectRoutes);
-app.use('/api', taskRoutes);
-app.use('/api', fileRoutes);
-app.use('/api/notifications', notificationRoutes);
+// Routes prefixed with /_/backend
+const apiRouter = express.Router();
 
-app.get('/api/health', (req, res) => {
+apiRouter.use('/auth', authRoutes);
+apiRouter.use('/admin', adminRoutes);
+apiRouter.use('/clients', clientRoutes);
+apiRouter.use('/projects', projectRoutes);
+apiRouter.use('/', taskRoutes);
+apiRouter.use('/', fileRoutes);
+apiRouter.use('/notifications', notificationRoutes);
+
+apiRouter.get('/health', (req, res) => {
   res.json({ success: true, message: 'PMS API is healthy', timestamp: new Date() });
 });
+
+app.use('/_/backend/api', apiRouter);
 
 // Error handling
 app.use(errorHandler);

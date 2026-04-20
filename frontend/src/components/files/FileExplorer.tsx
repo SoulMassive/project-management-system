@@ -149,7 +149,7 @@ const FileExplorer = ({ projectId }: FileExplorerProps) => {
 
                    <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity flex space-x-2">
                       <a 
-                        href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'}/files/${file._id}/download`} 
+                        href={`${import.meta.env.VITE_API_BASE_URL || '/_/backend/api'}/files/${file._id}/download`} 
                         target="_blank" 
                         rel="noreferrer"
                         className="text-[10px] font-bold text-primary hover:underline"
