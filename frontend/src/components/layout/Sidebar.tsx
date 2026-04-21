@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectCurrentUser } from '../../features/auth/authSlice';
 
 const navItems = [
-  { name: 'Dashboard', path: '/', icon: HiOutlineSquares2X2, roles: ['Admin', 'Manager', 'Developer', 'Sales'] },
+  { name: 'Dashboard', path: '/dashboard', icon: HiOutlineSquares2X2, roles: ['Admin', 'Manager', 'Developer', 'Sales'] },
   { name: 'Projects', path: '/projects', icon: HiOutlineBriefcase, roles: ['Admin', 'Manager', 'Developer'] },
   { name: 'Clients', path: '/clients', icon: HiOutlineUsers, roles: ['Admin', 'Manager', 'Sales'] },
   { name: 'Tasks', path: '/tasks', icon: HiOutlineClipboardDocumentList, roles: ['Admin', 'Manager', 'Developer', 'Sales'] },

@@ -1,42 +1,61 @@
-# Dependency directories
+# ══════════════════════════════════════════════════════════════════════════════
+# PROJECT MANAGEMENT SYSTEM — Root .gitignore
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── Dependencies ──────────────────────────────────────────────────────────────
 node_modules/
 jspm_packages/
+.pnp
+.pnp.js
 
-# Build outputs
+# ── Build outputs ─────────────────────────────────────────────────────────────
 dist/
 build/
-.next/
 out/
+.next/
+.nuxt/
 .docusaurus/
 .cache/
+.parcel-cache/
+*.tsbuildinfo
 
-# Debug logs
+# ── Environment variables (NEVER commit real .env files) ──────────────────────
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env.staging
+.env.*.local
+*.env
+# Allow example/template env files
+!.env.example
+!.env.template
+!.env.sample
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.env.*.local
-*.env
-
-# Keep example env files
-!.env.example
-
-# Operating System files
+# ── Operating System ──────────────────────────────────────────────────────────
 .DS_Store
 .DS_Store?
 ._*
 Thumbs.db
+Thumbs.db:encryptable
 desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
 
-# IDEs and Editors
+# ── Editors & IDEs ────────────────────────────────────────────────────────────
 .vscode/
 !.vscode/extensions.json
 !.vscode/launch.json
@@ -44,28 +63,50 @@ desktop.ini
 .idea/
 *.swp
 *.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 *.sublime-project
 *.sublime-workspace
 
-# Testing
+# ── Testing & Coverage ────────────────────────────────────────────────────────
 coverage/
-.nyc_output
+.nyc_output/
+*.lcov
+.jest-cache/
 
-# TypeScript
-*.tsbuildinfo
-
-# Vite
+# ── Frontend (Vite / React) ───────────────────────────────────────────────────
 frontend/dist/
+frontend/dist-ssr/
 frontend/.vite/
+frontend/.cache/
 
-# Backend build & runtime
+# ── Backend (Node / Express) ──────────────────────────────────────────────────
 backend/dist/
+# Keep the uploads folder structure but ignore actual uploaded files
 backend/uploads/*
 !backend/uploads/.gitkeep
+# Backend test/diagnostic scripts (generated temporarily, not part of codebase)
+backend/smtp-test.js
+backend/src/test-otp-email.ts
+backend/src/test-*.ts
+backend/src/test-*.js
 
-# Prisma
+# ── Prisma (legacy — removed, but keep rule for safety) ──────────────────────
 backend/prisma/migrations/
 /generated/prisma
 
-# Vercel
+# ── Deployment ────────────────────────────────────────────────────────────────
 .vercel/
+.netlify/
+
+# ── Package manager lockfile backups ─────────────────────────────────────────
+*.lock.bak
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.pem
+*.p12
+*.key
+*.cert
+*.crt

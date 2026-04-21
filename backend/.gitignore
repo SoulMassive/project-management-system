@@ -1,5 +1,37 @@
-node_modules
-# Keep environment variables out of version control
-.env
+# ── Backend .gitignore ────────────────────────────────────────────────────────
 
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Environment — NEVER commit real credentials
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+
+# Uploaded files (keep folder, ignore contents)
+uploads/*
+!uploads/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Diagnostic / scratch test scripts
+smtp-test.js
+src/test-*.ts
+src/test-*.js
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Legacy Prisma (removed from project)
 /generated/prisma
+prisma/migrations/
